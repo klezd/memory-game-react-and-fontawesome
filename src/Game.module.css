@@ -1,0 +1,70 @@
+.gameContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;  
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  gap:10px;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.iconHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: 22%;
+  height: 10vh;
+  position: relative;
+  border-radius: 10px;
+  transition: 0.25s;
+  font-size: 30px !important;
+  transform: rotateY(180deg);
+}
+
+.iconHolder.itemRotate {
+  transform: rotateY(0deg);
+}
+
+.iconHolder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #209d70;
+  border-radius: 10px;
+  transition: 0.25s;
+  /* opacity: 0.85; */
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.itemRotate::after, .itemMatched::after {
+  transform: rotateY(180deg);
+}
+
+.button {
+  padding: 15px 20px;
+  color: #267c65 !important;
+  background: #fff !important;
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600 !important;
+}
+
+.button:hover, .button:focus {
+  color: #fff !important;
+  background: #0d614b!important;
+}

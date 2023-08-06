@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Typography from "@mui/material/Typography";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
+import Game from "./Game";
+
+library.add(fas);
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Typography
+          variant="h2"
+          sx={{
+            color: "white",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            fontSize: "1.8em",
+          }}
         >
-          Learn React
-        </a>
+          Memory game
+        </Typography>
       </header>
+      <Game />
     </div>
   );
 }
