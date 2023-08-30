@@ -8,12 +8,35 @@
   width: 100%;
 }
 
-.game {
+.heading {
   display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+  width: inherit;
+  padding: 10px;
+}
+
+@media screen and (max-width: 400px) {
+  .heading {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+
+.title {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8em;
+}
+
+.game {
+  display: grid;
   flex-wrap: wrap;  
   justify-content: center;
   align-items: center;
-  width: inherit;
+  width: auto;
   gap:10px;
   transform-style: preserve-3d;
   perspective: 500px;
@@ -24,13 +47,12 @@
   justify-content: center;
   align-items: center;
   background: #fff;
-  width: 22%;
-  height: 10vh;
   position: relative;
   border-radius: 10px;
   transition: 0.25s;
-  font-size: 30px !important;
-  transform: rotateY(180deg);
+  font-size: 2em !important;
+  transform: rotateY(0deg);
+  /* transform: rotateY(180deg); */
 }
 
 .iconHolder.itemRotate {
@@ -51,6 +73,13 @@
 
 .itemRotate::after, .itemMatched::after {
   transform: rotateY(180deg);
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
 .button {

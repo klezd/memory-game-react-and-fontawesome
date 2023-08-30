@@ -1,28 +1,23 @@
 import "./App.css";
-import Typography from "@mui/material/Typography";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Game from "./Game";
+import Home from "./Home";
 
 library.add(fas);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Typography
-          variant="h2"
-          sx={{
-            color: "white",
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            fontSize: "1.8em",
-          }}
-        >
-          Memory game
-        </Typography>
-      </header>
-      <Game />
+      <Router>
+        {/* All routes are nested inside it */}
+        <Routes>
+          <Route path="/" exact element={<Home />}></Route>
+          <Route path="/game" element={<Game />}></Route>
+        </Routes>
+      </Router>
+      ;
     </div>
   );
 }

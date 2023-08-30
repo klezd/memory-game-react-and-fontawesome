@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+}
+
+.timer {
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  border: solid 1px #0d614b;
+  background-color: aliceblue;
+}
+
+.timerDigit {
+  letter-spacing: 0.1em !important;
+  font-size: 1.2em !important;
+  font-weight: 800 !important;
+  line-height: 1vw !important;
+}
