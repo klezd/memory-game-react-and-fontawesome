@@ -1,12 +1,18 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 
 import styles from "./Home.module.css";
-import { useNavigate } from "react-router-dom";
+import RankBoard from "../RankBoard/RankBoard";
 
 function Home() {
   const navigate = useNavigate();
+
+  const [openRB, setOpenRB] = useState(false);
 
   const newGame = (level) => {
     navigate("/game", { state: { level } });
@@ -63,7 +69,31 @@ function Home() {
       <Button className={styles.button}>Resume last game</Button> 
       */}
       </div>
+      <div>
+        <Divider className={styles.title} textAlign="left">
+          Ranking
+        </Divider>
+        <Button
+          variant="contained"
+          className={styles.button}
+          onClick={() => {
+            setOpenRB(true);
+          }}
+        >
+          Rank Board
+        </Button>
+      </div>
       <div></div>
+      <Modal
+        open={openRB}
+        onClose={() => setOpenRB(false)}
+        aria-labelledby="rank-modal-title"
+        aria-describedby="ranks-modal-description"
+      >
+        <Box className={styles.box}>
+          <RankBoard onClose={() => setOpenRB(false)} />
+        </Box>
+      </Modal>
     </div>
   );
 }

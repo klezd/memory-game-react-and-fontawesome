@@ -18,7 +18,6 @@ const Timer = forwardRef((props, ref) => {
   const [startTime, setStartTime] = useState(null);
   const [now, setNow] = useState(null);
   const [usedTime, setUsedTime] = useState(0);
-  const [result, setResult] = useState(0);
   const [isRun, setRun] = useState(false);
 
   const intervalRef = useRef(null);
@@ -29,41 +28,44 @@ const Timer = forwardRef((props, ref) => {
     function () {
       return {
         getResultState() {
+          const result = (now - startTime) / 1000;
           return result;
         },
       }; // the forwarded ref value
     },
-    [result]
+    [now, startTime]
   );
 
   const handlePause = useCallback(() => {
+    console.log("paused game");
     setRun(false);
 
     const pass = now - startTime;
 
     setUsedTime(pass / 1000);
-    setResult(pass / 1000);
 
     clearInterval(intervalRef.current);
   }, [startTime, now]);
 
   const handleStop = useCallback(() => {
+    console.log("stop game");
     setRun(false);
 
+    const passed = (now - startTime) / 1000;
     setUsedTime(0);
-    setResult(secondsPassed);
-
+    console.log(passed);
     clearInterval(intervalRef.current);
-  }, [secondsPassed]);
+  }, [now, startTime]);
 
   const handleStart = useCallback(() => {
+    console.log("start or resume game");
+
     setRun(true);
 
     setStartTime(Date.now() - usedTime * 1000);
     setNow(Date.now());
 
     clearInterval(intervalRef.current);
-    setResult(0);
 
     intervalRef.current = setInterval(() => {
       setNow(Date.now());

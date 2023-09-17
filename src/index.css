@@ -25,3 +25,14 @@ code {
 html, body, #root {
   width: 100% !important;
 }
+
+/* Hide scrollbars */
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+}
+
+body, #root {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
